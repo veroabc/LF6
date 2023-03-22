@@ -1,0 +1,11 @@
+Customer: Hi there, I need some help.
+
+Chatbot: Hello! I'm here to help you. What can I assist you with today?
+
+Customer: I want to know more about your products.
+
+Chatbot: Of course! We offer a wide range of products to meet your needs. What kind of products are you interested in?
+
+Customer: Thank you for your help!
+
+Chatbot: You're welcome! If you have any other questions or concerns, don't hesitate to reach out to us. Have a great day!
