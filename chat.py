@@ -1,3 +1,4 @@
+import json
 from llama_index import SimpleDirectoryReader, GPTListIndex, readers, GPTSimpleVectorIndex, LLMPredictor, PromptHelper
 from langchain import OpenAI
 import sys
@@ -33,7 +34,10 @@ def ask_ai():
     is_running = True
     retry_count = 0
     
-#Einfügen von bestimmten anzahl von runnende queries. max. 2 queries, if query is last query wasn'T SUCCESSFUL. Leite die Frage weiter.
+    #Add an empty list to hold the inputs and outputs
+    qa_data = []
+    
+    #Restrict the user tries to max. 2 round and then send the message to our support team
     while is_running: 
         query = input("What do you want to ask? ")        
         bot = index.query(query, response_mode="compact")
@@ -44,6 +48,13 @@ def ask_ai():
             print(bot.response)
             continue
         
+        #Add the input and output to the qa_data list
+        qa_data.append({'input': query, 'output': bot.response})
+        
+        # Write the list to a JSON file
+        with open("qa_data.json", "w") as f:
+            json.dump(qa_data, f)
+            
         print(f'{bot.response}\n\nWas this answer helpful? If yes, please enter "yes" else "no"')
         
         is_helpful_answer = "yes" in input("Was this answer helpful?: ").lower()
@@ -57,7 +68,7 @@ def ask_ai():
             print("I will send your request to our support team! We will contact you.")
             is_running = False
         
-os.environ["OPENAI_API_KEY"] = "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"
+os.environ["OPENAI_API_KEY"] = "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"
 
 construct_index("context_data/data")
 
