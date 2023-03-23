@@ -4,6 +4,7 @@ from langchain import OpenAI
 import sys
 import os
 from IPython.display import Markdown, display
+from datetime import datetime
 
 def construct_index(directory_path):
     # set maximum input size
@@ -34,9 +35,6 @@ def ask_ai():
     is_running = True
     retry_count = 0
     
-    #Add an empty list to hold the inputs and outputs
-    qa_data = []
-    
     #Restrict the user tries to max. 2 round and then send the message to our support team
     while is_running: 
         query = input("What do you want to ask? ")        
@@ -48,27 +46,31 @@ def ask_ai():
             print(bot.response)
             continue
         
-        #Add the input and output to the qa_data list
-        qa_data.append({'input': query, 'output': bot.response})
-        
-        # Write the list to a JSON file
-        with open("qa_data.json", "w") as f:
-            json.dump(qa_data, f)
+        # Get the current date and time
+        now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             
-        print(f'{bot.response}\n\nWas this answer helpful? If yes, please enter "yes" else "no"')
+        print(f'{bot.response}\n\nWas this answer helpful? If yes, please enter "yes" else "no"')    
         
         is_helpful_answer = "yes" in input("Was this answer helpful?: ").lower()
-        
         if is_helpful_answer:
             is_running = False
             retry_count = 0
         else:
             retry_count += 1
-        if retry_count >= 2:    
+        if retry_count >= 2:
+            contact_data = input("Please, enter your contact data Name, email:")   
             print("I will send your request to our support team! We will contact you.")
-            is_running = False
+
+            #Add the input and output to the qa_data list
+            qa_data = {'contact_data': contact_data, 'input': query, 'output': bot.response, 'time': now}
+            
+            # Write the list to a JSON file after the user is done interacting with the AI
+            with open("qa_data.json", "w") as f:
+                json.dump(qa_data, f)
         
-os.environ["OPENAI_API_KEY"] = "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"
+            is_running = False
+  
+os.environ["OPENAI_API_KEY"] = "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"
 
 construct_index("context_data/data")
 
