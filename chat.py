@@ -30,26 +30,46 @@ def construct_index(directory_path):
 
     return index
 
+
+def format_log(message: str, is_bot: bool = False):
+    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    source = "BOT" if is_bot else "USER"
+    return {
+        'sent': now,
+        'content': message,
+        'source': source
+    }
+
 def ask_ai():
     index = GPTSimpleVectorIndex.load_from_disk('index.json')
     is_running = True
     retry_count = 0
     
+    log_json = {
+        'messages': [],
+        'contact_data': None
+    }
+    
     #Restrict the user tries to max. 2 round and then send the message to our support team
     while is_running: 
         query = input("What do you want to ask? ")        
+        log_json["messages"].append(format_log(query))
+
         bot = index.query(query, response_mode="compact")
         
         is_bot_asking_question = "?" in bot.response
         
         if is_bot_asking_question:
             print(bot.response)
+            log_json["messages"].append(format_log(bot.response, True))
             continue
         
         # Get the current date and time
         now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            
-        print(f'{bot.response}\n\nWas this answer helpful? If yes, please enter "yes" else "no"')    
+        response = f'{bot.response}\n\nWas this answer helpful? If yes, please enter "yes" and you exit, else "no"'
+        
+        print(response)
+        log_json["messages"].append(format_log(bot.response, True))  
         
         is_helpful_answer = "yes" in input("Was this answer helpful?: ").lower()
         if is_helpful_answer:
@@ -58,17 +78,17 @@ def ask_ai():
         else:
             retry_count += 1
         if retry_count >= 2:
-            contact_data = input("Please, enter your contact data Name, email:")   
-            print("I will send your request to our support team! We will contact you.")
+            contact_data = input("Please, enter your contact data Name, Email:")
+            bot_contact_text = "I will send your request to our support team! We will contact you."
+            print(bot_contact_text)
 
             #Add the input and output to the qa_data list
-            qa_data = {'contact_data': contact_data, 'input': query, 'output': bot.response, 'time': now}
-            
-            # Write the list to a JSON file after the user is done interacting with the AI
-            with open("qa_data.json", "w") as f:
-                json.dump(qa_data, f)
+            log_json["contact_data"] = contact_data
         
             is_running = False
+
+    with open("qa_data.json", "w") as f:
+        json.dump(log_json, f)
   
 os.environ["OPENAI_API_KEY"] = ""
 
