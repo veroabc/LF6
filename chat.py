@@ -70,7 +70,7 @@ def ask_ai():
         
             is_running = False
   
-os.environ["OPENAI_API_KEY"] = "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"
+os.environ["OPENAI_API_KEY"] = ""
 
 construct_index("context_data/data")
 
