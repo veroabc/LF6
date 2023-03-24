@@ -1,5 +1,6 @@
 import openai
 import gradio
+import chat
 
 openai.api_key = "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"
 

@@ -7,10 +7,12 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+#the data will be stored in separated file to secure user data 
 SENDER = os.getenv("SENDER")
 PASSWORD = os.getenv("PASSWORD")
 RECIPIENTS = os.getenv("RECIPIENTS").split(",")
 
+#Definition from SMTP and secret data
 def send_email(subject, body):
     msg = MIMEText(body)
     msg['Subject'] = subject

@@ -33,7 +33,7 @@ def construct_index(directory_path):
 
     return index
 
-
+#Definition of date, content and source to place tha data in json file
 def format_log(message: str, is_bot: bool = False):
     now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     source = "BOT" if is_bot else "USER"
@@ -42,7 +42,7 @@ def format_log(message: str, is_bot: bool = False):
         'content': message,
         'source': source
     }
-
+#Connection with open_ai
 def ask_ai():
     index = GPTSimpleVectorIndex.load_from_disk('index.json')
     is_running = True
@@ -51,7 +51,7 @@ def ask_ai():
         'contact_data': None
     }
     
-    #Restrict the user tries to max. 2 round and then send the message to our support team
+    #Restrict the user tries to max. 2 rounds and then send the message to our support team in while loop
     while is_running: 
         query = input("What do you want to ask? ")        
         log_json["messages"].append(format_log(query))
@@ -71,12 +71,13 @@ def ask_ai():
         
         print(response)
         log_json["messages"].append(format_log(bot.response, True))  
-            
+        
+        #get the responce from user if it is "yes" -> exit or "no" -> continue   
         is_helpful_answer = "yes" in input("Was this answer helpful?:").lower()
         if is_helpful_answer:
             is_running = False
             return
-        
+        #After that get more information about the problem
         problem_description = input("Describe the problem further:")
         bot = index.query(problem_description, response_mode="compact")
         response = f'{bot.response}\n\Was the problem solved? If yes, please enter "yes" and you exit, else "no" and I will send the problem to our support team. '
@@ -91,7 +92,7 @@ def ask_ai():
         bot_contact_text = "I will send your request to our support team! We will contact you as soon as possible."
         print(bot_contact_text)
 
-        #Add the input and output to the qa_data list
+        #Add the input and output to the qa_data list and send the same date using gmail accout(in the extended version it could be a server  or vm.)
         log_json["contact_data"] = contact_data
     
         send_rq.send_email( subject="Support request from Chatbot", body="New support request:" + json.dumps(log_json, indent = 4))
@@ -99,8 +100,9 @@ def ask_ai():
 
     with open("qa_data.json", "w") as f:
         json.dump(log_json, f)
-  
-os.environ["OPENAI_API_KEY"] = "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"
+
+#the data will be stored in separated file to secure the user data  
+os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 
 construct_index("context_data/data")
 
