@@ -1,0 +1,24 @@
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chat-wrapper {
+    background-color: grey;
+    height: 500px;
+    width: 500px;
+    display: grid;
+    grid-template-rows: 1fr auto;
+}
+
+.chat-content {
+    height: 100%;
+    background-color: azure;
+}
+
+.chat-input {
+    display: flex;
+    justify-content: space-between;
+}
