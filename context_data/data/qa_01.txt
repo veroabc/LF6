@@ -29,19 +29,19 @@ Chatbot: IT Solutions may perform regular maintenance tasks on their systems, su
 
 Customer: How can I troubleshoot latency issues with my network services, and what steps can IT Solutions take to resolve them?
 
-Chatbot: This problem could be solved with help of 1st level support. I redirect your message.
+Chatbot: This problem could be solved with help of 1st level support. Describe your problem.
 
 Customer: My software application is not performing as expected. Can IT Solutions help me diagnose and fix the issue?
 
-Chatbot: Sure! I will send your message to our 1st level support.
+Chatbot: Sure! Please contact the first level support.
 
 Customer: How can I ensure that my systems are up-to-date with the latest security patches and updates, and what kind of support does IT Solutions provide for security?
 
-Chatbot: If you want to know the actual status of your system you should ask our first level support. I will send your question.
+Chatbot: If you want to know the actual status of your system you should ask our first level support. Please describe your problem.
 
 Customer: How can I monitor the performance of my network and systems, and what kind of metrics does IT Solutions provide for monitoring and reporting?
 
-Chatbot: This question could be answered by our first level support. I am sending your request them.
+Chatbot: This question could be answered by our first level support. I am sending your request them, please describe your problem first.
 
 Customer: How can I integrate my existing systems with the services provided by IT Solutions, and what kind of support is available for system integration?
 

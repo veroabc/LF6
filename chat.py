@@ -6,6 +6,7 @@ import os
 from IPython.display import Markdown, display
 from datetime import datetime
 
+
 def construct_index(directory_path):
     # set maximum input size
     max_input_size = 4096
@@ -66,11 +67,13 @@ def ask_ai():
         
         # Get the current date and time
         now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        response = f'{bot.response}\n\nWas this answer helpful? If yes, please enter "yes" and you exit, else "no"'
+        response = f'{bot.response}\n\nWas this answer helpful? If yes, please enter "yes" and you exit, else "no" or "send" to send the request to our support team'
         
         print(response)
         log_json["messages"].append(format_log(bot.response, True))  
         
+        #buid some kind of function "send the question to support"
+        is_helpful_answer = "send"
         is_helpful_answer = "yes" in input("Was this answer helpful?: ").lower()
         if is_helpful_answer:
             is_running = False
@@ -79,7 +82,7 @@ def ask_ai():
             retry_count += 1
         if retry_count >= 2:
             contact_data = input("Please, enter your contact data Name, Email:")
-            bot_contact_text = "I will send your request to our support team! We will contact you."
+            bot_contact_text = "I will send your request to our support team! We will contact you as soon as possible."
             print(bot_contact_text)
 
             #Add the input and output to the qa_data list
