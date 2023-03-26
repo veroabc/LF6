@@ -4,11 +4,12 @@ Chatbot: The guaranteed availability and latency for IT Solutions' network servi
 
 Customer: How can I communicate with IT Solutions if I have technical issues or questions about my contract?
 
-Chatbot: You can reach IT Solutions' support team by phone, email, or through their online support portal. Contact information should be provided in your contract or service level agreement.
+Chatbot: You can reach IT Solutions' support team by Telephone, e-mail, chat, ticket software, or through their online support portal. Contact information should be provided in your contract or service level agreement.
 
 Customer: What are the support hours for IT Solutions, and how can I reach their support team during these hours?
 
-Chatbot: IT Solutions' support hours should be specified in your contract or service level agreement. Typically, support is available during standard business hours, but some contracts may include 24/7 support. You can reach the support team by phone, email, or through their online support portal.
+Chatbot: IT Solutions' support hours Mon - Fri
+8:00 - 17:00*, but some contracts may include 24/7 support. You can reach the support team by email, or through their online support portal.
 
 Customer: How does IT Solutions measure customer satisfaction, and what actions are taken to address any dissatisfaction?
 
@@ -16,7 +17,7 @@ Chatbot: IT Solutions may conduct surveys or other feedback mechanisms to measur
 
 Customer: How long does it typically take for IT Solutions to recover from a service outage, and what steps are taken to prevent future outages?
 
-Chatbot: The time it takes to recover from a service outage depends on the nature and severity of the outage. IT Solutions' service level agreement should specify recovery time objectives (RTOs) for different types of outages. To prevent future outages, IT Solutions may perform regular maintenance, monitor system performance, and implement redundancy and failover mechanisms.
+Chatbot: The time it takes to recover from a service outage depends on the nature and severity of the outage. Planned outages should be decided upon by the customer’s technical contact person and IT Solutions’ responsible employee. They must be communicated to all involved parties at least two weeks beforehand.
 
 
 Customer: What kind of general maintenance tasks are performed by IT Solutions on their systems, and how often are they performed?
@@ -25,7 +26,33 @@ Chatbot: IT Solutions may perform regular maintenance tasks on their systems, su
 
 Customer: How is bridging between different network systems handled by IT Solutions, and what protocols are used?
 
-Chatbot: IT Solutions may perform regular maintenance tasks on their systems, such as applying software updates, replacing hardware components and so on.. . If you want to get more answers, i will send your request to our 1st level support.
+Chatbot: IT Solutions may perform regular maintenance tasks on their systems, such as System integration:
+developing system architectures
+migrating data and applications
+integrating systems, applications, and databases
+Network maintenance:
+analyzing and troubleshooting the network
+monitoring network traffic
+monitoring network configuration
+performing regular maintenance work
+Software Development:
+developing software for customers
+paying attention to user friendly, secure and efficient software solutions
+Monitoring:
+monitoring network
+monitoring system performance
+performing regular tests to detect problems in a timely manner
+
+If you want to get more answers, i will send your request to our 1st level support.
+
+Customer: I need to be sure that my own date is secure by IT Solutions? Can you describe the data process?
+
+Chatbot: You should not be worried about your data security. We are obliged to protect customers’ data and use only requirements related to data minimization, purpose limitation, consent, and data subjects' rights.
+
+Customer: But how can i be sure that the data won't be hacked or changed from others. Our data is so sensetive.
+
+Chatbot: Our data security includes requirements related to encryption, access controls, intrusion detection, and incident response.
+If you want to get more information. I could send your question to our support team.
 
 Customer: How can I troubleshoot latency issues with my network services, and what steps can IT Solutions take to resolve them?
 
@@ -54,7 +81,7 @@ to our 1st level support.
 
 Customer: I need to recover data that was lost due to a system outage. What is the process for data recovery, and what kind of support can I expect from IT Solutions?
 
-Chatbot: Sure! You should have a contact with our second level support. I will redirect your request.
+Chatbot: Sure! You should have a contact with our second level support at first. But if you lost the data on your pc, it is still secure by our servern. We are using redundandant clouds infrustructures in different air-gapped locations in the world. We are using air-gapped systemes and doing backups every day. 
 
 Customer: I'm encountering errors with my hardware systems. How can IT Solutions help me diagnose and resolve these errors?
 
