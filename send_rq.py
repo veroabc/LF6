@@ -12,7 +12,7 @@ SENDER = os.getenv("SENDER")
 PASSWORD = os.getenv("PASSWORD")
 RECIPIENTS = os.getenv("RECIPIENTS").split(",")
 
-#Definition from SMTP and secret data
+# Sends emails to our support team with a given subject and body
 def send_email(subject, body):
     msg = MIMEText(body)
     msg['Subject'] = subject
